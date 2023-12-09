@@ -2,8 +2,11 @@ package com.highlander.DesafioModeloDeDominioORM.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name = "tb_categorai")
+@Table(name = "tb_categoria")
 public class Categoria {
 
     @Id
@@ -12,6 +15,9 @@ public class Categoria {
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
+
+    @OneToMany
+    private List<Atividade> atividades = new ArrayList<>();
 
     public Categoria() {
     }
@@ -35,5 +41,9 @@ public class Categoria {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public List<Atividade> getAtividades() {
+        return atividades;
     }
 }
